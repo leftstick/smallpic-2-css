@@ -1,0 +1,35 @@
+{
+  "name": "smallpic-2-css",
+  "version": "1.0.0",
+  "description": "Generate css from specify small pictures",
+  "main": "./index.js",
+  "scripts": {
+    "test": "mocha --reporter nyan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leftstick/smallpic-2-css.git"
+  },
+  "keywords": [
+    "small-picture",
+    "css"
+  ],
+  "author": "Howard.Zuo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leftstick/smallpic-2-css/issues"
+  },
+  "engines": {
+    "node": ">= 0.12"
+  },
+  "homepage": "https://github.com/leftstick/smallpic-2-css#readme",
+  "dependencies": {
+    "glob": "^5.0.15",
+    "image-size": "^0.3.5"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "rimraf": "^2.4.3",
+    "should": "^7.1.0"
+  }
+}
