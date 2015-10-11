@@ -34,7 +34,7 @@ In above example, let's say we have following structure:
 |    |---react-logo.png
 ```
 
-The `css` will be generated at `root/dist/generated.css`, and content would be like this:
+The `css` will be generated to `root/dist/generated.css`, and content would be like this:
 
 ```css
 .es6{
