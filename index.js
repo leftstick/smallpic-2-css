@@ -47,8 +47,13 @@ var generator = function(pattern, options, cb) {
                 defaultEncoding: 'utf8'
             });
             files.forEach(function(file) {
-                var dimensions = sizeOf(file);
                 var basename = path.basename(file);
+                var stat = fs.statSync(file);
+                if (options.picSizeLimit && stat.size > options.picSizeLimit) {
+                    console.warn(basename + ' is ignored because of the exceeded size');
+                    return;
+                }
+                var dimensions = sizeOf(file);
                 var name = basename.substring(0, basename.indexOf('.'));
 
                 outStream.write('.' + name + '{\n    width: ' + dimensions.width + 'px;\n    height: ' + dimensions.height + 'px;\n    background-image: url(' + options.urlRoot + basename + ');\n}\n');

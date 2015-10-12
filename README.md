@@ -22,7 +22,11 @@ npm install smallpic-2-css --save
 ```javascript
 var gen = require('smallpic-2-css');
 
-gen('root/logo/*.png', {out: 'root/dist/generated.css', urlRoot: '../logo/'}, function(err){
+gen('root/logo/*.png', {
+    out: cssPath,
+    urlRoot: '../logo/',
+    picSizeLimit: 10240 //picture will be ignored while generating css
+}, function(err){
     if(err){
         //error occurred while generating css
     }

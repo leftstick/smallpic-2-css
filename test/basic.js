@@ -10,9 +10,20 @@ describe('basic test', function() {
     var dest = path.resolve(__dirname, 'tmp');
     var cssPath = path.resolve(__dirname, 'tmp', 'out.css');
 
-    it('simple copy', function(done) {
+    it('simple generate', function(done) {
         gen('test/logo/*.png', {out: cssPath, urlRoot: '../logo/'}, function(err) {
-            should(fs.readFileSync(cssPath, {encoding: 'utf8'})).eql('.es6{\n    width: 406px;\n    height: 140px;\n    background-image: url(../logo/es6.png);\n}\n.react-logo{\n    width: 391px;\n    height: 377px;\n    background-image: url(../logo/react-logo.png);\n}\n', 'css content is incorrect');
+            should(fs.readFileSync(cssPath, {encoding: 'utf8'})).eql('.angular-u-logo{\n    width: 400px;\n    height: 400px;\n    background-image: url(../logo/angular-u-logo.png);\n}\n.es6{\n    width: 70px;\n    height: 25px;\n    background-image: url(../logo/es6.png);\n}\n.react-logo{\n    width: 50px;\n    height: 48px;\n    background-image: url(../logo/react-logo.png);\n}\n', 'css content is incorrect');
+            done();
+        });
+    });
+
+    it('generate with large picture', function(done) {
+        gen('test/logo/*.png', {
+            out: cssPath,
+            urlRoot: '../logo/',
+            picSizeLimit: 10240
+        }, function(err) {
+            should(fs.readFileSync(cssPath, {encoding: 'utf8'})).eql('.es6{\n    width: 70px;\n    height: 25px;\n    background-image: url(../logo/es6.png);\n}\n.react-logo{\n    width: 50px;\n    height: 48px;\n    background-image: url(../logo/react-logo.png);\n}\n', 'css content is incorrect');
             done();
         });
     });
