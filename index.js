@@ -46,11 +46,13 @@ var generator = function(pattern, options, cb) {
             var outStream = fs.createWriteStream(options.out, {
                 defaultEncoding: 'utf8'
             });
+
+            var ignores = [];
             files.forEach(function(file) {
                 var basename = path.basename(file);
                 var stat = fs.statSync(file);
                 if (options.picSizeLimit && stat.size > options.picSizeLimit) {
-                    console.warn(basename + ' is ignored because of the exceeded size');
+                    ignores.push(basename);
                     return;
                 }
                 var dimensions = sizeOf(file);
@@ -59,7 +61,9 @@ var generator = function(pattern, options, cb) {
                 outStream.write('.' + name + '{\n    width: ' + dimensions.width + 'px;\n    height: ' + dimensions.height + 'px;\n    background-image: url(' + options.urlRoot + basename + ');\n}\n');
             });
             outStream.end(cb);
-
+            if (!options.quite && ignores.length) {
+                console.log(require('chalk').yellow('[ ' + ignores.join(', ') + ' ] ' + (ignores.length === 1 ? 'is' : 'are') + ' ignored because of the exceeded size'));
+            }
         });
     });
 };

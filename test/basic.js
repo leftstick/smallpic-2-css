@@ -21,7 +21,8 @@ describe('basic test', function() {
         gen('test/logo/*.png', {
             out: cssPath,
             urlRoot: '../logo/',
-            picSizeLimit: 10240
+            picSizeLimit: 10240,
+            quite: false
         }, function(err) {
             should(fs.readFileSync(cssPath, {encoding: 'utf8'})).eql('.es6{\n    width: 70px;\n    height: 25px;\n    background-image: url(../logo/es6.png);\n}\n.react-logo{\n    width: 50px;\n    height: 48px;\n    background-image: url(../logo/react-logo.png);\n}\n', 'css content is incorrect');
             done();

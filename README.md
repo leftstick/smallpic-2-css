@@ -25,7 +25,8 @@ var gen = require('smallpic-2-css');
 gen('root/logo/*.png', {
     out: cssPath,
     urlRoot: '../logo/',
-    picSizeLimit: 10240 //picture will be ignored while generating css
+    picSizeLimit: 10240, //picture will be ignored while generating css
+    quite: false    //warning will be ignored
 }, function(err){
     if(err){
         //error occurred while generating css

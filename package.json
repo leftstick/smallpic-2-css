@@ -1,6 +1,6 @@
 {
   "name": "smallpic-2-css",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Generate css from specify small pictures",
   "main": "./index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/leftstick/smallpic-2-css#readme",
   "dependencies": {
+    "chalk": "^1.1.1",
     "glob": "^5.0.15",
     "image-size": "^0.3.5"
   },
