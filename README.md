@@ -6,6 +6,10 @@
 
 Generate css from specify small pictures. This is not a sprite generator, we don't generate a sprite picture, but css with `url` as `background-image` instead.
 
+`smallpic-2-css` is designed for legacy projects which you are planning to remove compass sprite usage with `url-loader` way proposed by `webpack`.
+
+Let's say you already have a folder that contains lots of small pictures, and they were supposed to combined to sprite picture with css. Now, if you are going to do in `webpack` way, you don't need a sprite picture anymore, but css is still required. Try this library.
+
 
 ## Installation
 
