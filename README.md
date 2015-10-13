@@ -1,4 +1,4 @@
-# smallpic-2-css
+smallpic-2-css
 ==================
 [![NPM version][npm-image]][npm-url]
 ![][david-url]
