@@ -26,7 +26,8 @@ gen('root/logo/*.png', {
     out: cssPath,
     urlRoot: '../logo/',
     picSizeLimit: 10240, //picture will be ignored while generating css
-    quite: true    //warning will be ignored
+    quite: true,    //warning will be ignored
+    prefix: 'img-'  //prefix will be used in front of each generated class
 }, function(err){
     if(err){
         //error occurred while generating css
@@ -46,12 +47,12 @@ In above example, let's say we have following structure:
 The `css` will be generated to `root/dist/generated.css`, and content would be like this:
 
 ```css
-.es6{
+.img-es6{
     width: 406px;
     height: 140px;
     background-image: url(../logo/es6.png);
 }
-.react-logo{
+.img-react-logo{
     width: 391px;
     height: 377px;
     background-image: url(../logo/react-logo.png);

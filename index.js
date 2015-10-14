@@ -58,7 +58,7 @@ var generator = function(pattern, options, cb) {
                 var dimensions = sizeOf(file);
                 var name = basename.substring(0, basename.indexOf('.'));
 
-                outStream.write('.' + name + '{\n    width: ' + dimensions.width + 'px;\n    height: ' + dimensions.height + 'px;\n    background-image: url(' + options.urlRoot + basename + ');\n}\n');
+                outStream.write('.' + (options.prefix || '') + name + '{\n    width: ' + dimensions.width + 'px;\n    height: ' + dimensions.height + 'px;\n    display: inline-block;\n    background-image: url(' + options.urlRoot + basename + ');\n}\n');
             });
             outStream.end(cb);
             if (!options.quite && ignores.length) {

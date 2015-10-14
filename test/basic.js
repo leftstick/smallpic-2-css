@@ -12,7 +12,7 @@ describe('basic test', function() {
 
     it('simple generate', function(done) {
         gen('test/logo/*.png', {out: cssPath, urlRoot: '../logo/'}, function(err) {
-            should(fs.readFileSync(cssPath, {encoding: 'utf8'})).eql('.angular-u-logo{\n    width: 400px;\n    height: 400px;\n    background-image: url(../logo/angular-u-logo.png);\n}\n.es6{\n    width: 70px;\n    height: 25px;\n    background-image: url(../logo/es6.png);\n}\n.react-logo{\n    width: 50px;\n    height: 48px;\n    background-image: url(../logo/react-logo.png);\n}\n', 'css content is incorrect');
+            should(fs.readFileSync(cssPath, {encoding: 'utf8'})).eql('.angular-u-logo{\n    width: 400px;\n    height: 400px;\n    display: inline-block;\n    background-image: url(../logo/angular-u-logo.png);\n}\n.es6{\n    width: 70px;\n    height: 25px;\n    display: inline-block;\n    background-image: url(../logo/es6.png);\n}\n.react-logo{\n    width: 50px;\n    height: 48px;\n    display: inline-block;\n    background-image: url(../logo/react-logo.png);\n}\n', 'css content is incorrect');
             done();
         });
     });
@@ -22,9 +22,10 @@ describe('basic test', function() {
             out: cssPath,
             urlRoot: '../logo/',
             picSizeLimit: 10240,
-            quite: false
+            quite: false,
+            prefix: 'img-'
         }, function(err) {
-            should(fs.readFileSync(cssPath, {encoding: 'utf8'})).eql('.es6{\n    width: 70px;\n    height: 25px;\n    background-image: url(../logo/es6.png);\n}\n.react-logo{\n    width: 50px;\n    height: 48px;\n    background-image: url(../logo/react-logo.png);\n}\n', 'css content is incorrect');
+            should(fs.readFileSync(cssPath, {encoding: 'utf8'})).eql('.img-es6{\n    width: 70px;\n    height: 25px;\n    display: inline-block;\n    background-image: url(../logo/es6.png);\n}\n.img-react-logo{\n    width: 50px;\n    height: 48px;\n    display: inline-block;\n    background-image: url(../logo/react-logo.png);\n}\n', 'css content is incorrect');
             done();
         });
     });
